@@ -11,12 +11,19 @@ pipeline {
 
         stage('Terraform Deploy') {
             steps {
-                dir('Terraform') {
-                    // sh 'terraform init'
-                    // sh 'terraform apply -auto-approve'
-                    bat 'terraform init'
-                    bat 'terraform apply -auto-approve'
-                }
+                // dir('Terraform') {
+                //     // sh 'terraform init'
+                //     // sh 'terraform apply -auto-approve'
+                //     bat 'terraform init'
+                //     bat 'terraform apply -auto-approve'
+                // }
+                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'aws-creds']]) {
+
+                    dir('Terraform') {
+                        bat 'terraform init'
+                        bat 'terraform apply -auto-approve'
+                    }
             }
         }
 
