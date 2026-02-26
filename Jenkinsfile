@@ -12,8 +12,10 @@ pipeline {
         stage('Terraform Deploy') {
             steps {
                 dir('Terraform') {
-                    sh 'terraform init'
-                    sh 'terraform apply -auto-approve'
+                    // sh 'terraform init'
+                    // sh 'terraform apply -auto-approve'
+                    bat 'terraform init'
+                    bat 'terraform apply -auto-approve'
                 }
             }
         }
@@ -23,7 +25,7 @@ pipeline {
                 // sh 'aws s3 sync website/ s3://prajwal-portfolio-bucket2026'
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', 
                   credentialsId: 'aws-creds']]) {
-                    sh 'aws s3 sync Website/ s3://prajwal-portfolio-bucket2026'
+                    bat 'aws s3 sync Website/ s3://prajwal-portfolio-bucket2026'
                 }
 
             }
