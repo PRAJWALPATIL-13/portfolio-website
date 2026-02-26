@@ -3,11 +3,11 @@ pipeline {
 
     stages {
 
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/PRAJWALPATIL-13/portfolio-website.git'
-            }
-        }
+        // stage('Clone Repo') {
+        //     steps {
+        //         git 'https://github.com/PRAJWALPATIL-13/portfolio-website.git'
+        //     }
+        // }
 
         stage('Terraform Deploy') {
             steps {
