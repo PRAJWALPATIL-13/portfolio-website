@@ -26,6 +26,7 @@ pipeline {
                     }
             }
         }
+    }
 
         stage('Upload Website') {
             steps {
